@@ -1,21 +1,58 @@
-import { Box, Typography, Container, Paper } from '@mui/material';
+import { Box, Typography, Button, Container, Paper } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import CountriesList from './Countries/CountriesList';
 
-export const Home = () => {
+const Home = () => {
+    const { user } = useAuth();
+
+    if (user) {
+        return <CountriesList />;
+    }
+
     return (
         <Container maxWidth="md">
-            <Box sx={{ mt: 8, textAlign: 'center' }}>
-                <Paper elevation={3} sx={{ p: 4 }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: '80vh',
+                    textAlign: 'center',
+                }}
+            >
+                <Paper elevation={3} sx={{ p: 4, width: '100%', maxWidth: 600 }}>
                     <Typography variant="h3" component="h1" gutterBottom>
-                        Welcome to Countries Full Stack App
+                        Welcome to Countries App
                     </Typography>
                     <Typography variant="h6" color="text.secondary" paragraph>
-                        Explore countries data and learn more about different regions of the world.
+                        Discover detailed information about countries around the world, including their weather data.
                     </Typography>
-                    <Typography variant="body1" color="text.secondary">
-                        Please login to access the full features of the application.
-                    </Typography>
+                    <Box sx={{ mt: 4, display: 'flex', gap: 2, justifyContent: 'center' }}>
+                        <Button
+                            component={Link}
+                            to="/login"
+                            variant="contained"
+                            color="primary"
+                            size="large"
+                        >
+                            Login
+                        </Button>
+                        <Button
+                            component={Link}
+                            to="/register"
+                            variant="outlined"
+                            color="primary"
+                            size="large"
+                        >
+                            Register
+                        </Button>
+                    </Box>
                 </Paper>
             </Box>
         </Container>
     );
-}; 
+};
+
+export default Home; 
