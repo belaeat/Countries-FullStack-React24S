@@ -8,13 +8,9 @@ import {
 } from "../store/slices/testSlice";
 import { DynamicTable } from "./DynamicTable";
 
-// interface TestResponse {
-//   status: string;
-//   data: Array<Record<string, unknown>>;
-//   timestamp: string;
-// }
 
-export const TestData = () => {
+
+export const ProtectedTestData = () => {
   const dispatch = useAppDispatch();
   const data = useAppSelector(selectTestData);
   const error = useAppSelector(selectTestError);
@@ -23,30 +19,6 @@ export const TestData = () => {
   useEffect(() => {
     dispatch(fetchTestData());
   }, [dispatch]);
-
-  //   const [data, setData] = useState<TestResponse | null>(null);
-  //   const [error, setError] = useState<string | null>(null);
-
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await fetch("http://localhost:5001/test/supabase");
-  //         const result = await response.json();
-
-  //         if (result.error) {
-  //           setError(result.error);
-  //         } else {
-  //           setData(result);
-  //         }
-  //       } catch (err) {
-  //         setError(err instanceof Error ? err.message : "An error occurred");
-  //       } finally {
-  //         setLoading(false);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }, []);
 
   if (error) {
     return (

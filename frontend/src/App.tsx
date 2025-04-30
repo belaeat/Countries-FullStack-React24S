@@ -1,48 +1,35 @@
-import { Box, Container, AppBar, Toolbar, Typography, Button } from "@mui/material";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { TestData } from "./components/TestData";
-import { ThemeProvider } from "./theme/ThemeProvider";
+import { Box } from "@mui/material";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ProtectedTestData } from "./components/ProtectedTestData";
+import { AuthProvider } from "./context/AuthContext";
+import { Navigation } from "./components/Navigation";
+import { ProtectedRoute } from "./components/Auth/ProtectedRoute";
+import { Login } from "./components/Auth/Login";
+import { Home } from "./components/Home";
 
 function App() {
   return (
-    <ThemeProvider>
+    <AuthProvider>
       <BrowserRouter>
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static">
-            <Toolbar>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Countries App
-              </Typography>
-              <Button color="inherit" component={Link} to="/">
-                Home
-              </Button>
-              <Button color="inherit" component={Link} to="/test">
-                Test Data
-              </Button>
-            </Toolbar>
-          </AppBar>
-
-          <Container sx={{ mt: 4 }}>
+        <Box>
+          <Navigation />
+          <Box sx={{ p: 3 }}>
             <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
               <Route
-                path="/"
+                path="/test"
                 element={
-                  <Box>
-                    <Typography variant="h4" component="h1" gutterBottom>
-                      Welcome to the Home Page
-                    </Typography>
-                    <Typography variant="body1">
-                      Use the navigation above to explore the app
-                    </Typography>
-                  </Box>
+                  <ProtectedRoute>
+                    <ProtectedTestData />
+                  </ProtectedRoute>
                 }
               />
-              <Route path="/test" element={<TestData />} />
             </Routes>
-          </Container>
+          </Box>
         </Box>
       </BrowserRouter>
-    </ThemeProvider>
+    </AuthProvider>
   );
 }
 
