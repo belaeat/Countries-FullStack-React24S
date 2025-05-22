@@ -11,7 +11,7 @@ A modern full-stack application for exploring countries around the world, built 
 - Persistent sessions with PKCE flow
 - Secure password handling
 
-### Countries Exploration
+### Countries App
 
 - Browse a comprehensive list of countries
 - View detailed information about each country including:
@@ -20,6 +20,8 @@ A modern full-stack application for exploring countries around the world, built 
   - Additional data (languages, currencies, etc.)
 - Responsive grid layout for country cards
 - Dark/Light theme support
+- Implemented pagination
+- Filter by categories or search by name.
 
 ### Favorites System
 

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { WeatherData, WeatherState } from '../../types/weather';
+import { WeatherState } from '../../types/weather';
 import { weatherApi } from '../../api/services/weather';
 
 const initialState: WeatherState = {
@@ -14,6 +14,7 @@ export const fetchWeather = createAsyncThunk(
     try {
       return await weatherApi.getWeatherByCity(city);
     } catch (error) {
+      console.error('Weather fetch error:', error);
       return rejectWithValue('Failed to fetch weather data');
     }
   }
