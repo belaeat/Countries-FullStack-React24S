@@ -29,6 +29,9 @@ const Home = () => {
                     <Typography variant="h6" color="text.secondary" paragraph>
                         Discover detailed information about countries around the world, including their weather data.
                     </Typography>
+                    <Typography variant="h6" color="red" paragraph>
+                        Disclaimer: This application is being deployed on Render.com and  it might takes time (good amound of time as I am a free user) to load. Please be patient.
+                    </Typography>
                     <Box sx={{ mt: 4, display: 'flex', gap: 2, justifyContent: 'center' }}>
                         <Button
                             component={Link}
