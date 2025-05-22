@@ -40,6 +40,17 @@ export const Navigation = () => {
                     )}
                     {user && (
                         <Link
+                            component={RouterLink}
+                            to="/favorites"
+                            color="inherit"
+                            underline="none"
+                            sx={{ cursor: 'pointer' }}
+                        >
+                            Favorites
+                        </Link>
+                    )}
+                    {user && (
+                        <Link
                             color="inherit"
                             underline="none"
                             sx={{ cursor: 'pointer' }}

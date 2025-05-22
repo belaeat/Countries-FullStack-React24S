@@ -1,83 +1,154 @@
-# Countries Fullstack
+# Countries FullStack Application
 
-A full-stack application with NestJS backend and React frontend.
+A modern full-stack application for exploring countries around the world, built with React, TypeScript, and Supabase.
 
-## Project Structure
+## Features
 
-```shell
-project-root/
-├── backend/   # NestJS application
-└── frontend/  # React application
-```
+### Authentication
+
+- User registration and login using Supabase Auth
+- Protected routes for authenticated users
+- Persistent sessions with PKCE flow
+- Secure password handling
+
+### Countries Exploration
+
+- Browse a comprehensive list of countries
+- View detailed information about each country including:
+  - Basic information (name, flag, population)
+  - Geographic details (region, capital)
+  - Additional data (languages, currencies, etc.)
+- Responsive grid layout for country cards
+- Dark/Light theme support
+
+### Favorites System
+
+- Add countries to favorites
+- View favorite countries in a dedicated section
+- Remove countries from favorites
+- Real-time updates when modifying favorites
+- Caching system to reduce API calls
+
+### User Interface
+
+- Modern Material-UI (MUI) components
+- Responsive design for all screen sizes
+- Dark/Light theme toggle
+- Toast notifications for user feedback
+- Loading states and error handling
+- Clean and intuitive navigation
+
+## Technologies Used
+
+### Frontend
+
+- React 18
+- TypeScript
+- Material-UI (MUI)
+- React Router v6
+- React Query
+- React Toastify
+- Axios
+- Redux Toolkit
+
+### Backend
+
+- Supabase
+  - Authentication
+  - PostgreSQL Database
+  - Row Level Security (RLS)
+  - Real-time subscriptions
+
+### Development Tools
+
+- Vite
+- ESLint
+- Prettier
+- TypeScript
+- Git
 
 ## Prerequisites
 
-- Node.js (v18 or higher recommended)
-- npm (comes with Node.js)
+- Node.js (v16 or higher)
+- npm or yarn
+- Supabase account
+
+## Environment Variables
+
+Create a `.env` file in the frontend directory with the following variables:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
 ## Installation
 
 1. Clone the repository:
 
 ```bash
-git clone <your-repository-url>
-cd <project-directory>
+git clone https://github.com/belaeat/Countries-FullStack-React24S.git
+cd Countries-FullStack-React24S
 ```
 
-2. Install all dependencies (both frontend and backend):
+2. Install dependencies:
 
 ```bash
-npm run install:all
+cd frontend
+npm install
 ```
 
-## Development
+```bash
+  cd backend
+  npm install
+```
 
-Start both frontend and backend development servers:
+3. Start the development server:
 
 ```bash
+cd backend
+npm run start
+```
+
+```bash
+cd frontend
 npm run dev
 ```
 
-The applications will be available at:
+The application will be available at `http://localhost:5180`
 
-- Frontend: http://localhost:5180
-- Backend: http://localhost:3000
+## Features in Detail
 
-### Available Commands
+### Authentication Flow
 
-- `npm run dev` - Start both frontend and backend in development mode
-- `npm run dev:frontend` - Start only the frontend
-- `npm run dev:backend` - Start only the backend
-- `npm run install:all` - Install dependencies for both projects
-- `npm run install:frontend` - Install frontend dependencies
-- `npm run install:backend` - Install backend dependencies
-- `npm run build` - Build both projects
-- `npm run build:frontend` - Build frontend only
-- `npm run build:backend` - Build backend only
+- Secure authentication using Supabase Auth
+- Protected routes with React Router
+- Automatic session management
+- User profile management
 
-## Environment Setup
+### Countries Data
 
-1. Create a `.env` file in the backend directory:
+- Fetched from REST Countries API
+- Cached using React Query
+- Real-time updates for favorites
+- Optimistic updates for better UX
 
-```env
-SUPABASE_URL=https://your-supabase-instance.supabase.co
-SUPABASE_ANON_KEY=your-anon-key
-```
+### Favorites System
 
-## Tech Stack
+- Row Level Security ensures data privacy
+- Automatic user_id assignment
+- Real-time synchronization
+- Optimistic UI updates
 
-- **Frontend:**
-  - React
-  - TypeScript
-  - Vite
-- **Backend:**
-  - NestJS
-  - TypeScript
-  - Supabase
+### Theme System
 
-## Development Notes
+- Dynamic theme switching
+- Persistent theme preference
+- Custom MUI theme configuration
+- Responsive design patterns
 
-- The backend includes CORS configuration for the frontend port (5180)
-- TypeScript is configured for both frontend and backend
-- ESLint and Prettier are set up for code formatting
-- Both applications include hot-reload functionality for development
+## Acknowledgments
+
+- REST Countries API for country data
+- Material-UI for the component library
+- NestJS and Supabase for backend services
