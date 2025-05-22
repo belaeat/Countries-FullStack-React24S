@@ -2,7 +2,6 @@ import { supabase } from '../../config/supabase';
 import { Country } from '../../types/country';
 import { CountryFavorite } from '../../types/favorite';
 
-// Cache for favorite status to reduce redundant API calls
 let favoritesCache: CountryFavorite[] | null = null;
 let lastFetchTime = 0;
 const CACHE_EXPIRY = 30000; // 30 seconds

@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import CountryCard from './CountryCard';
 import CountriesToolbar from './CountriesToolbar';
-// import { Country } from '../../types/country';
+
 
 const ITEMS_PER_PAGE = 12;
 
@@ -103,7 +103,7 @@ const CountriesList = () => {
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const currentCountries = filteredCountries.slice(startIndex, endIndex);
 
-    const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
