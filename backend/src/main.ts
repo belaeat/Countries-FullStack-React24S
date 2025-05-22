@@ -10,10 +10,12 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'frontend'));
 
   app.enableCors({
-    origin: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    origin:
+      process.env.NODE_ENV === 'production'
+        ? ['https://countries-fullstack.onrender.com']
+        : ['http://localhost:5180'],
     credentials: true,
   });
-  await app.listen(process.env.PORT ?? 5001);
+  await app.listen(process.env.PORT || 5001);
 }
 bootstrap();
