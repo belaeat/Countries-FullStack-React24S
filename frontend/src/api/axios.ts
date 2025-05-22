@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: import.meta.env.PROD ? '' : 'http://localhost:5001',
+  baseURL: import.meta.env.PROD
+    ? 'https://countries-fullstack-react24s.onrender.com'
+    : 'http://localhost:5001',
   headers: {
     'Content-Type': 'application/json',
   },
