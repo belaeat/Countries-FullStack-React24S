@@ -6,8 +6,8 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  app.useStaticAssets(join(__dirname, '..', 'frontend'));
-  app.setBaseViewsDir(join(__dirname, '..', 'frontend'));
+  app.useStaticAssets(join(__dirname, '..', '..', 'frontend', 'dist'));
+  app.setBaseViewsDir(join(__dirname, '..', '..', 'frontend', 'dist'));
 
   app.enableCors({
     origin:
@@ -16,6 +16,9 @@ async function bootstrap() {
         : ['http://localhost:5180'],
     credentials: true,
   });
-  await app.listen(process.env.PORT || 5001);
+
+  const port = process.env.PORT || 5001;
+  await app.listen(port);
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();

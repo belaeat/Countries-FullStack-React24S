@@ -5,7 +5,7 @@ services:
     buildCommand: |
       cd frontend && npm install && npm run build
       cd ../backend && npm install && npm run build
-    startCommand: cd backend && npm run start:prod
+    startCommand: cd backend && PORT=$PORT npm run start:prod
     envVars:
       - key: VITE_SUPABASE_URL
         sync: false
@@ -15,3 +15,5 @@ services:
         sync: false
       - key: SUPABASE_ANON_KEY
         sync: false
+      - key: NODE_ENV
+        value: production
